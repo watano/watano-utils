@@ -1,0 +1,103 @@
+a,a:link,a:visited,a:hover {color:#006091;}
+li.fs a.fdleft,li.fs a.fdleft:link,li.fs a.fdleft:visited,li.fs a.fdleft:active,li.fd_mg a.fdleft,li.fd_mg a.fdleft:link,li.fd_mg a.fdleft:visited,li.fd_mg a.fdleft:active {color:#e2f1dc;}
+li.fs a.fdleft:hover,li.fd_mg a.fdleft:hover {color:#fff;}
+.newskinbody li.fs a:hover, .newskinbody li.fs_sep a:hover {background:#618b3a;text-decoration:none;}
+.mysidebar ul.navlist_min li.fs a,.mysidebar ul.navlist_max li.fs a {color:#006091;}
+.mysidebar ul.navlist_min li.fs a:hover,.mysidebar ul.navlist_max li.fs a:hover {background:#a5d9f0;}
+.attbg {background:#d4edf9;}
+.tipstitle {background:#9c9c9c ;}
+/********* New Skin **********/
+.frame_class {padding:0;}
+.getuserdata {background:url(https://res.mail.qq.com/zh_CN/htmledition/images/skin_16/top_bg_list023457.gif) repeat-x}
+.topdata {background:url(https://res.mail.qq.com/zh_CN/htmledition/images/skin_16/top_data023457.gif) no-repeat;}
+.topline {background:url(https://res.mail.qq.com/zh_CN/htmledition/images/skin_16/topline_bg023457.gif) repeat-x;}
+.toplineimg {background:url(https://res.mail.qq.com/zh_CN/htmledition/images/skin_16/topline023457.gif) no-repeat;width:197px;height:11px;}
+.bodybgbt {width:192px;}
+#leftPanel {left:0;width:192px;}
+.listflow {margin-left:8px;bottom:5px;}
+.newskinbody {background:url(https://res.mail.qq.com/zh_CN/htmledition/images/skin_16/left_normal_bg023457.jpg) no-repeat;padding-left:8px;}
+.fdbody {background:url(https://res.mail.qq.com/zh_CN/htmledition/images/skin_16/left_bottom_bg023457.jpg) #67b9dc 0 596px;}
+.folderDiv {margin-right:14px;} 
+.readmailinfo .fdbody {background-image:none}
+/************************导航栏下的图片****************************/
+li.fn {background:#4f7333;color:#ffffff;padding-right:1px;}
+.fn_list {background:#4ca5d8;}
+.fn_list a:link,.fn_list a:visited,.fn_list a:hover,.fn_list a:active {color:#FFFFFF;}
+li.fs a.fn_list,li.fs a.fn_list:link,li.fs a.fn_list:visited {background:#4f7333;color:#ffffff;border:1px solid #93bc6d;}
+li.fs .icon_folderlist_star {background-position:-80px -176px}
+li.fs .drifticon { background-position:-32px -190px;}
+.sizebar,.todaytip,.tipstitle,.cptitle{border:1px solid #6d6d6d ;}
+.cptab,.cpright,.addrsort {border:1px solid #9ad0eb ;}
+a:hover,.txt_title_none a:hover,.tabtitle td a:hover {color:#0087ca;}
+.settingSub a:hover{color:#0087ca;}
+.huizhi {background:#fff9e3;border:1px solid #fadc80;}
+/*******************邮件列表按纽的背景渐变图***************************/
+.toolbg,.toolbg1{background:#a5d9f0;}
+.tabtitle ,.addrsort{background:#a5d9f0 ;}
+.settingTitle{background:#a5d9f0 ;}
+.tabtitle {border-top:5px solid #a5d9f0 ;}
+.toolbgline,.tabtitle td,.readmailinfo,.addr_line,.filtertd1,.bartools {border-bottom:1px solid #6fbce2;}
+.filtertd {border-top:1px solid #b7ddf0 ;}
+.tabtitle td.selected,.colorpanel,.bd,.tpinfo {border:1px solid #6fbce2;}
+.bd_upload {border:1px solid #4ca5d8;}
+.readmailinfo,.settingtable,.tabtitle td.selected,.biginfo,.tipstitle,.colorsure {background:#ecf9ff ;}
+.settingTitle .selected{background:#ecf9ff ;}
+.addrtitle {color:#7a8f99 ;}
+.B,.nomail,.colortitle {background:#dff3fc;}
+.mailinfo {border-bottom:2px solid #fff;filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#ffffff, endColorstr=#ecf9ff ,gradientType=0);}
+.colortitle {filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#eef1f3, endColorstr=#ffffff,gradientType=0);border:1px solid #fff;}
+.txt_title,.txt_title_tab,.biginfo,.tipstitle {color:#00334d ;}
+.topbg {float:right;background:url(https://res.mail.qq.com/zh_CN/htmledition/images/skin_16/top_bg023457.jpg) no-repeat right;width:745px;height:68px;}
+.sepline {border-top:1px solid #4b6123;border-bottom:1px solid #86ac6a;height:0;overflow:hidden;}
+/***********导航栏文件夹文字的颜色***************/
+/*li.fs a:link,li.fs a:visited {color:#006091 ;}*/
+li.fs a:link,li.fs a:visited,li.fd_mg a:link,li.fd_mg a:visited {color:#e2f1dc;}
+li.fn a:link,li.fn a:visited {color:#ffffff;}
+/***********导航栏收信，写信文字的颜色***************/
+ul.navbar li a:link,ul.navbar li a:visited {color:#006091;}
+ul.navbar li.fs a:hover {background:#7bc7f0}
+/***********“我的文件夹”文字的颜色***************/
+.settingtd {border-top:1px solid #fff;}
+.addr_line {font-size:16px;font-weight:bold;border-bottom-width:2px;}
+/***** Setting Page*******/
+.tabtitle td.selected {border-bottom:none;}
+.settingline {border-bottom:1px solid #fff;}
+/********列表颜色控制表start*********/
+.O {background:#f4f4f4;border-bottom:1px solid #d0d0d0;border-top:1px solid #fff;}
+.selbar_bt {background:#f4f4f4;border-top:1px solid #fff;border-bottom:1px solid #fff;}
+
+.graytip {background:#ffffe9;text-align:center;padding:3px 0;border-bottom:1px solid #e3e6eb;}
+.searchtip {background:#fffde3;padding:7px 0 7px 13px;border:1px solid #c1c8d2;margin-bottom:4px;clear:both;}
+.readmailinfo {border-top:1px solid #fff;border-left:none;border-right:none;}
+.txt {border:1px solid #718da6;height:20px;padding-top:2px;}
+.cpright {background:#fff;}
+.cptitle {border-left:none;border-right:none;border-top:none;height:26px!important;height:25px;height:/**/25px;}
+.cptab {position:absolute;height:25px;border-bottom:none;line-height:24px;width:88px!important;width:90px;width:/**/90px;text-align:center;}
+.cpslt {background:#fff;height:25px;font-weight:bold;}
+.cpslt a {text-decoration:none;color:#000;}
+.addrtips {border-bottom:1px solid #d8dee5;padding:7px 0 3px 6px;margin:3px;color:#979ea5;}
+.addrsort {border-left:none;border-right:none;border-bottom:none;height:23px;line-height:23px;padding-left:8px;cursor:pointer;}
+.bartools {background:#fff;}
+.tipstitle {border:1px solid #fff;filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#ecf9ff, endColorstr=#ffffff,gradientType=0);background:#ecf9ff}
+.rightpanel legend,.newu legend {color:#7a1414;}
+.todaytip,.rightpanel,.qqshowbd,.newu {border:1px solid #b7ddf0;}
+.settingtd, .leftpanel{border-bottom:1px solid #b7ddf0 ;}
+.grptitle {background:#afafaf;color:#fff;border:1px solid #e3e3e3;border-bottom:none;}
+.bd_webqq {border:1px solid #fff;border-top:none;}
+.bd_ccc {border:1px solid #e3e3e3;border-top:none;border-left:none;}
+.bd_fff {border-left:1px solid #e3e3e3;}
+.composetab_sel {filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#d4edf9, endColorstr=#a5d9f0,gradientType=0);background:#a5d9f0;}
+.composetab_unsel {filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#d4edf9, endColorstr=#ecf9ff,gradientType=0);background:#d4edf9;}
+.grptitle_tab {filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#d4edf9, endColorstr=#ffffff,gradientType=0);background:#d4edf9;}
+.grptitle_tab_ {filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#ffffff, endColorstr=#d4edf9,gradientType=0);background:#d4edf9;}
+.secpwd_link,.secpwd_txt, {color:#e2f1dc}
+.secpwd_link a,.secpwd_link a:visited {color:#fff;font-weight:normal}
+.backhomeimg_today {background:url(https://res.mail.qq.com/zh_CN/htmledition/images/skin_16/ico_home023457.gif) no-repeat;}
+.newskinbody li.fs_sep .fn_list {background:#4f7333;}
+
+
+#mainFrameContainer {left:195px;}
+#mainFrame {_width:expression(document.body.offsetWidth - 195 + 'px');}
+.bgGradient { background: -moz-linear-gradient(top, #ecf9ff, #d4edf9);background: -webkit-gradient(linear, center top, center bottom, from(#ecf9ff), to(#d4edf9)); }
+.ico_reader {background-position:-128px -176px;}
+.ico_reader_unread{background-position:-112px -192px;}

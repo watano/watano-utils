@@ -1,0 +1,66 @@
+#title:watano-codegen - watano代码生成工具
+#author: watano(watano@gmail.com)
+--------------------------------------------------------------------------------------------------------
+简介
+
+	使用freemarker作为代码生成模板, iniplus文件配置公用生成参数.
+	这个只是一个通用目的的代码生成器,只生成代码,不能同步更新已修改文件.
+--------------------------------------------------------------------------------------------------------
+运行方式
+
+	* codegen 运行java程序codegen,指定对应的mode和相关参数生成一组代码.主要用于一次生成大量相关代码.典型的例子:
+		# 快速生成项目工程文件框架
+		# 根据实体对象生成对应dao和service的接口及实现类文件
+		# 生成struts2的action,model,view等文件.
+	* autogen 启动一个后台程序,自动监视模板目录.一旦模板文件修改则自动根据模板生成代码.主要用于单文件代码快速及时生成.典型的例子有:
+		# 简化生成繁琐的web.xml配置文件
+		# 使用freemarker封装部分HTML繁琐重复的页面逻辑,生成对应的html文件,达到类似tiles功能
+
+--------------------------------------------------------------------------------------------------------
+配置
+
+	工具使用一个增强过的ini类似文件格式iniplus的配置文件codegen.ini.
+	# freemarker相关配置参数
+		* Freemarker.deletebak=false
+			代码生成时是否删除备份文件
+		* Freemarker.backup=true
+			代码生成时是否保存备份文件
+		* Freemarker.DirectoryForTemplateLoading=.\templates
+			代码生成模板文件目录
+		* Freemarker.AutoImports=f,/ftl/function.ftl,html,/ftl/html.ftl
+			代码生成器自动导入的ftl文件及其namespace
+	# 所有mode公用的配置
+		* args=
+			运行codegen时mode的附加参数对应的参数name列表. 例如:
+			args=params_1,params_2,params_3
+			运行codegen pomxml aa bb cc时,
+			params_1=aa 
+			params_2=bb 
+			params_3=cc 
+		* inifiles=file://e:\documents\.m2\pom_base.ini,pom.ini
+			当前mode生成时自动引入的附加ini参数文件.这些文件的参数将可以在模板文件中直接使用.最普遍的用法是作为多语言文件配置
+		* params=
+			当前mode生成时使用的私有参数,格式为:params_key1,params_value1,params_key2,params_value2,params_key3,params_value3,...
+		* preprocess=assertPom
+			当前mode生成前对参数的预处理方法名
+		* tpls=pom.xml.ftl,pomlink.bat.ftl,.classpath.ftl
+			当前mode代码模板自动导入的ftl文件及其namespace
+
+	# 代码文件编码(没有完全实现)
+		[encoding]
+		*.ftl=utf-8
+	# 所有mode公用参数设置
+		[common-params]
+		params_key=params_value
+	# mode相关配置
+		[mode_name]
+		* args=
+		* inifiles=file://e:\documents\.m2\pom_base.ini,pom.ini
+		* params=
+		* preprocess=assertPom
+		* tpls=pom.xml.ftl,pomlink.bat.ftl,.classpath.ftl
+内置任务
+	# pomxml
+		# pom.xml 根据pom.ini文件生成对应的pom.xml文件.
+		# pomlink.bat 根据pom.ini中的类库依赖,使用mklink命令硬链接repository中的jar文件到当前工程目录的target\lib\下
+		# .classpath eclipse工程应用类库配置文件, 此文件将使用target\lib\下的类库jar文件
