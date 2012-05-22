@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html>
+    <head id="container" name="container">
+        <meta http-equiv="Content-Type" content="text/html; charset=gb18030">
+        <meta http-equiv="cache-control" content="no-cache">
+        <meta http-equiv="expires" content="mon, 22 jul 2002 11:12:01 GMT">
+        <meta http-equiv="pragma" content="no-cache">
+        <title>QQ邮箱 - 换肤</title>
+        <script>
+            document.domain = "qq.com";
+            function getTop(){
+                var _oSelfFunc = arguments.callee;
+                if (!_oSelfFunc._moTop) {
+                    try {
+                        _oSelfFunc._moTop = window != parent ? (parent.getTop ? parent.getTop() : parent.parent.getTop()) : window;
+                    } 
+                    catch (_oError) {
+                        _oSelfFunc._moTop = window;
+                    }
+                }
+                return _oSelfFunc._moTop;
+            }
+            
+            try {
+                window.top = getTop();
+            } 
+            catch (e) {
+                eval("var top=getTop();");
+            }
+            var gsTest = "frame_html,0";
+            window != getTop() && getTop().location.replace(window.location.href);
+        </script>
+        <script>
+            Cookie = {
+                g: function(k){
+                    return ((new RegExp(["(?:; )?", k, "=([^;]*);?"].join(""))).test(document.cookie) && RegExp["$1"]) || "";
+                },
+                s: function(k, v, e, d){
+                    document.cookie = [k, "=", v, e && e["toGMTString"] ? ';expires=' + e.toGMTString() : "", ";path=/;domain=", d || ".mail.qq.com"].join("");
+                }
+            };
+        </script>
+        <script>
+            Cookie.g("tinfo").split("*").length == 2 ? Cookie.s("tinfo", Cookie.g("tinfo") + "*") : Cookie.s("tinfo", "", new Date(0));
+        </script>
+        <script>
+            var g_sid = "kv11Mb7-FYIwFxNe", g_uin = "77041519", g_admuin = "-2484574766", g_encryptzero = "-2484574303", g_encryptuin = "-1683939497", mo_path = "https://res.mail.qq.com/zh_CN/", stationery_path = "/zh_CN/htmledition/", card_path = "https://res.mail.qq.com/zh_CN/", images_path = "https://res.mail.qq.com/zh_CN/htmledition/images/", js_path = "https://res.mail.qq.com/zh_CN/htmledition/js/", css_path = "https://res.mail.qq.com/zh_CN/htmledition/style/", style_path = "/cgi-bin/getcss?sid=kv11Mb7-FYIwFxNe&ft=", editor_path = "https://res.mail.qq.com/zh_CN/htmledition/qqmaileditor/", skin_path = "16", alevel = "0", gLogoId = "0", gsLogoFolder = "/", bnewwin = 0, gnRssInterval = parseInt("600"), gLn = {
+                all: "051550",
+                linkman: "051acc",
+                qmlinkman: "052030",
+                qmcamera: "0509e8",
+                qmlunar: "0509e8",
+                qmdatectrl: "0509e8",
+                qmslidebox: "0509e8",
+                xflib_xw: "0509e8",
+                editor: "05170e",
+                editor_toolbar: "05170e",
+                editor_toolbar_plus: "05170e",
+                qmtool: "0509e8",
+                qmaddress: "0509e8",
+                qmqzoneimg: "0509e8",
+                qmtip: "0509e8",
+                "plus/formatter": "05170e",
+                "plus/bgmusic": "05170e",
+                "plus/mo": "05170e",
+                comm: "04f8f3",
+                rss: "04f8f3",
+                domain: "02340f",
+                camera_photo: "02340f",
+                cardaddr: "023457",
+                qqplus_kernel: "0509e8",
+                qqplus_ui: "0509e8",
+                qmcalendar: "0509e8",
+                qmverify: "0509e8",
+                getimgkey: "0509e8",
+                bookmail_stock: "0509e8",
+                bookscript: "0509e8",
+                libcompose: "051550",
+                qmantispam: "0509e8",
+                sps_tmpl: "0509e8",
+                e: ""
+            }, QQPlusUpdateStatus = function(){
+            };
+            var gsRssDomain = 'https://r.mail.qq.com', gsMailDomain = location.protocol + "//" + location.host;
+            
+        </script>
+        <script>
+            (function(_aow){
+                var _os = {}, _nt = +new Date, _sm;
+                _aow.MarkTime = function(_avn, _asd){
+                    var _sn = typeof _avn == "number" ? "t" + _avn : _avn;
+                    typeof _os[_sn] != "number" && (_os[_sn] = +new Date - _nt);
+                };
+                MarkTime.oStamp = _os;
+            })(window);
+        </script>
+        <script>
+            var JsChecker = {
+                isreload: false,
+                check: function(_asFile){
+                    return typeof window[(/[0-9a-fA-F]{6}$/.test(_asFile) ? _asFile.substr(0, _asFile.length - 6) : _asFile) + "_js"] == "function";
+                },
+                load: function(_aoFiles, _abIsReload){
+                    for (var i = 0, _nLen = _aoFiles.length; i < _nLen; i++) {
+                        var _sFile = _aoFiles[i];
+                        if (_sFile && (!_abIsReload || !JsChecker.check(_sFile))) {
+                            document.write("<script", " language='javascript' src='https://res.mail.qq.com/zh_CN/htmledition/js/", _sFile, ".js", _abIsReload ? "?" + Math.random() : "", "'></", "script>");
+                            _abIsReload && (JsChecker.isreload = true);
+                        }
+                    }
+                }
+            };
+        </script>
+        <link rel="stylesheet" type="text/css" href="frame_html_files/comm2010044c43.css" onload="MarkTime(1,'comm2010.css');">
+        <link rel="stylesheet" type="text/css" href="frame_html_files/getcss.css" onload="MarkTime(2,'skin16.css')">
+        <script>
+            JsChecker.load(["all051550", "qmtool0509e8"]);
+        </script>
+        <script language="javascript" src="frame_html_files/all051550.js">
+        </script>
+        <script language="javascript" src="frame_html_files/qmtool0509e8.js">
+        </script>
+        <script>
+            MarkTime(3, 'js load1');
+        </script>
+        <script>
+            JsChecker.load(["all051550", "qmtool0509e8"], true);
+        </script>
+        <script>
+            !JsChecker.check("all051550") && location.replace(location.href + "&res=local");
+        </script>
+        <script>
+            MarkTime(4, 'js load2');
+        </script>
+        <style type="text/css">
+            html, body {
+                padding: 0;
+                margin: 0;
+                overflow: auto;
+                overflow-x: hidden;
+            }
+            
+            html {
+                height: 100%;
+            }
+        </style>
+        <script src="frame_html_files/profile_tips051acc.js" charset="gb2312" type="text/javascript">
+        </script>
+        <script src="frame_html_files/reader_unread_count.htm" charset="gb2312" type="text/javascript">
+        </script>
+        <script src="frame_html_files/editor05170e.js" charset="gb2312" type="text/javascript">
+        </script>
+        <script src="frame_html_files/qmaddress0509e8.js" charset="gb2312" type="text/javascript">
+        </script>
+        <script src="frame_html_files/readmail2051600.js" charset="gb2312" type="text/javascript">
+        </script>
+        <script src="frame_html_files/qmlunar0509e8.js" charset="gb2312" type="text/javascript">
+        </script>
+        <script src="frame_html_files/qmqzoneimg0509e8.js" charset="gb2312" type="text/javascript">
+        </script>
+        <script src="frame_html_files/qmlinkman052030.js" charset="gb2312" type="text/javascript">
+        </script>
+        <script src="frame_html_files/qmtip0509e8.js" charset="gb2312" type="text/javascript">
+        </script>
+        <script src="frame_html_files/editor_toolbar05170e.js" charset="gb2312" type="text/javascript">
+        </script>
+        <script src="frame_html_files/editor_toolbar_plus05170e.js" charset="gb2312" type="text/javascript">
+        </script>
+        <script src="frame_html_files/greeting_card051082.js" charset="gb2312" type="text/javascript">
+        </script>
+        <script src="frame_html_files/postcarddata0509e8.js" charset="gb2312" type="text/javascript">
+        </script>
+        <script src="frame_html_files/qmslidebox0509e8.js" charset="gb2312" type="text/javascript">
+        </script>
+    </head>
+    <body class="frame_class" onbeforeunload="return beforeFrameHtmlUnload();">
+        <div id="dragtitle" class="drag_out" style="display:none;">
+        </div>
+        <iframe cbi_inited="true" loaded="true" id="spellcheckDocument" name="spellcheckDocument" class="menu_base_if" onload="this.setAttribute('loaded','true');_creAteifRAmeoNlQAd_('spellcheckDocument',this);" src="frame_html_files/domain02340f_003.htm" style="display: none;" _file="css%3Ahttps%3A%2F%2Fres.mail.qq.com%2Fzh_CN%2Fhtmledition%2Fstyle%2Fcomm04f8f3.css%7Ccss%3A%2Fcgi-bin%2Fgetcss%3Fsid%3Dkv11Mb7-FYIwFxNe%26ft%3Dskin%7C" _header="%3Cscript%3Efunction%20getTop()%20%7B%20%20%20%20var%20_oSelfFunc%20%3D%20arguments.callee%3B%20%20%20%20if%20(!_oSelfFunc._moTop)%20%7B%20%20%20%20%20%20%20%20try%20%7B%20%20%20%20%20%20%20%20%20%20%20%20_oSelfFunc._moTop%20%3D%20window%20!%3D%20parent%20%3F%20parent.getTop%20%3F%20parent.getTop()%20%3A%20parent.parent.getTop()%20%3A%20window%3B%20%20%20%20%20%20%20%20%7D%20catch%20(_oError)%20%7B%20%20%20%20%20%20%20%20%20%20%20%20_oSelfFunc._moTop%20%3D%20window%3B%20%20%20%20%20%20%20%20%7D%20%20%20%20%7D%20%20%20%20return%20_oSelfFunc._moTop%3B%7D%3C%2Fscript%3E" _body="" frameborder="0" scrolling="no">
+        </iframe>
+        <iframe loaded="true" id="signatureFrame" name="signatureFrame" class="" onload="this.setAttribute('loaded','true');_creAteifRAmeoNlQAd_('signatureFrame',this);" src="frame_html_files/getcomposedata.htm" style="display: none;" frameborder="0" scrolling="no">
+        </iframe>
+        <iframe loaded="true" id="_13035280086430714207302166227" name="_13035280086430714207302166227" class="" onload="this.setAttribute('loaded','true');_creAteifRAmeoNlQAd_('_13035280086430714207302166227',this);" src="frame_html_files/domain02340f_003.htm" style="display: none;" _file="css%3A%2Fcgi-bin%2Fgetcss%3Fsid%3Dkv11Mb7-FYIwFxNe%26ft%3Dskin16.css%7C" _header="" _body="" frameborder="0" scrolling="no">
+        </iframe>
+        <table id="load_process" style="position: absolute; top: 45px; left: 0pt; width: 100%; display: none; z-index: 9999;" border="0" cellpadding="0" cellspacing="0">
+            <tbody>
+                <tr>
+                    <td align="center">
+                        <table class="autosave autosave_txt" style="height: 20px;" border="0" cellpadding="0" cellspacing="0">
+                            <tbody>
+                                <tr>
+                                    <td style="width: 2px;">
+                                    </td>
+                                    <td id="load_process_img" style="padding: 0pt 0pt 0pt 5px;">
+                                        <img src="frame_html_files/ico_loading.gif" style="width: 16px; height: 16px; vertical-align: middle;">
+                                    </td>
+                                    <td id="load_process_plan" style="padding: 0pt 0pt 0pt 5px;" valign="center">
+                                        <div style="font:1px;border:1px solid white;width:104px;text-align:left;">
+                                            <div id="load_process_plan_bar" style="font:1px;background:#fff;height:8px;margin:1px 0;width:50%;">
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td id="load_process_plan_info" style="padding: 0pt 0pt 0pt 5px;">
+                                    </td>
+                                    <td id="load_process_plan_rate" style="width: 40px; text-align: right; padding: 0pt;">
+                                    </td>
+                                    <td id="load_process_info" style="padding: 0pt 0pt 0pt 5px;">
+                                    </td>
+                                    <td id="load_process_cancel" style="padding: 0pt 0pt 0pt 5px;">
+                                        [<a onclick="getTop().cancelDoSend();" nocheck="true" style="color: white;">取消</a>]
+                                    </td>
+                                    <td style="padding: 0pt 0pt 0pt 5px;">
+                                    </td>
+                                    <td style="width: 2px;">
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <iframe cbi_inited="true" loaded="true" id="actionFrame" name="actionFrame" class="menu_base_if" onload="this.setAttribute('loaded','true');_creAteifRAmeoNlQAd_('actionFrame',this);" src="frame_html_files/domain02340f_003.htm" style="display: none;" _file="" _header="%3Cscript%3Efunction%20getTop()%20%7B%20%20%20%20var%20_oSelfFunc%20%3D%20arguments.callee%3B%20%20%20%20if%20(!_oSelfFunc._moTop)%20%7B%20%20%20%20%20%20%20%20try%20%7B%20%20%20%20%20%20%20%20%20%20%20%20_oSelfFunc._moTop%20%3D%20window%20!%3D%20parent%20%3F%20parent.getTop%20%3F%20parent.getTop()%20%3A%20parent.parent.getTop()%20%3A%20window%3B%20%20%20%20%20%20%20%20%7D%20catch%20(_oError)%20%7B%20%20%20%20%20%20%20%20%20%20%20%20_oSelfFunc._moTop%20%3D%20window%3B%20%20%20%20%20%20%20%20%7D%20%20%20%20%7D%20%20%20%20return%20_oSelfFunc._moTop%3B%7D%3C%2Fscript%3E" _body="" frameborder="0" scrolling="no">
+        </iframe>
+        <a href="https://mail.qq.com/cgi-bin/loginswitch?f=html&amp;nf=xhtml&amp;sid=kv11Mb7-FYIwFxNe&amp;url=%2Fcgi-bin%2Ftoday" nocheck="true" style="position: absolute; top: -99px;">使用读屏软件的朋友请进入这个入口</a>
+        <div class="getuserdata" id="topDataTd">
+            <div class="topdata">
+                <script language="javascript">
+                    var nn = "watano";
+                </script>
+                <div class="topbg" style="height:66px">
+                    <div class="setinfo addrtitle" id="SetInfo">
+                        <div class="right">
+                            <span id="imePanel" style="display:none;"><span id="imeIcon" style="*margin:0px 5px 0 0;_position:relative;_top:2px;" css="pointer icon_ime" on="已开启，点击可关闭云输入法" off="已关闭，点击可开启云输入法" onclick="QMIme.toggle();"></span> | </span>
+                            <a href="http://support.qq.com/cgi-bin/beta1/titlelist_simple?pn=0&amp;order=3&amp;fid=350" target="_blank" class="toptitle">反馈建议</a>
+                            <span class="addrtitle"> | </span>
+                            <a href="http://service.mail.qq.com/" target="_blank" class="toptitle">帮助中心</a>
+                            <span class="addrtitle"> | </span>
+                            <a href="https://mail.qq.com/cgi-bin/logout?sid=kv11Mb7-FYIwFxNe&amp;loc=frame_html,,,5" target="_parent" class="toptitle">退出</a>
+                        </div>
+                        <div id="minimize_container" class="right">
+                        </div>
+                        <div id="gplayer_container" class="right">
+                        </div>
+                    </div>
+                    <div class="search_subject nowrap">
+                        <div class="txt_outdiv">
+                            <input autocomplete="off" id="subject" maxlength="50" value="邮件全文搜索..." onfocus="QMFullTextSearch.onfocus();" onblur="QMFullTextSearch.onblur();" onkeydown="QMFullTextSearch.onkeydown(event);" class="txt input_subject" style="color: rgb(160, 160, 160);" type="text"><input class="btn normal wd2 btn_true" value="查找邮件" onclick="QMFullTextSearch.search();" type="button">
+                        </div>
+                        <div class="f_size addrtitle normal" id="allattch" style="z-index:14;">
+                            &nbsp;|&nbsp;<span id="arrowAdvancedSearch" style="visibility: visible;padding-right:4px;" class="arrow_fontsize_search pointer nounderline f_family black" onclick="showAdvanceSearchMenu();">▼</span>&nbsp;
+                        </div>
+                    </div>
+                </div>
+                <div class="lgoo" id="logotips">
+                    <a class="imglogo pointer skinlogo" style="width: 215px; height: 60px;" href="https://mail.qq.com/cgi-bin/today?sid=kv11Mb7-FYIwFxNe&amp;error=index&amp;loc=frame_html,,,1" target="mainFrame" hidefocus=""><img t="3" e="imglogo" logotitle="" stylenum="16" id="imglogo" src="frame_html_files/logo_16_0023410.gif" height="60"></a>
+                    <div class="switch">
+                        <div class="left" style="margin-top:1px;">
+                            <b id="useralias">watano</b>
+                            <span id="useraddrcontainer" class="pointer">&lt;<span id="useraddr" title="关联其他QQ邮箱">watano@qq.com</span>&gt;
+                                <small class="arrow_fontsize" style="visibility: visible;" id="useraddrArrow">
+                                    ▼
+                                </small>
+                            </span>
+                            <span class="" id="useraddrcontainer_ipad" style="display:none;">&lt;<span id="useraddr_ipad" title="关联其他QQ邮箱">watano@qq.com</span>&gt;</span>
+                            <style>
+                                .bindacc .menu_item, .bindacc .menu_item_high, .bindacc .menu_item_nofun {
+                                    padding: 0 10px 0 8px;
+                                }
+                            </style>
+                            <span id="qqplus_talktab" style="position:absolute;cursor:pointer;white-space:nowrap;"></span>
+                            <br>
+                            <span class="addrtitle"><a href="https://mail.qq.com/cgi-bin/today?sid=kv11Mb7-FYIwFxNe&amp;loc=frame_html,,,2" target="mainFrame">邮箱首页</a>&nbsp;|&nbsp;<a href="https://mail.qq.com/cgi-bin/setting1?sid=kv11Mb7-FYIwFxNe&amp;fun=list&amp;loc=frame_html,,,3" target="mainFrame" id="frame_html_setting">设置</a>&nbsp;-&nbsp;<a md="0" initlized="true" href="https://mail.qq.com/cgi-bin/setting5?sid=kv11Mb7-FYIwFxNe&amp;fun=list&amp;loc=frame_html,,,4" target="mainFrame">换肤</a>&nbsp;|&nbsp;<a href="http://reader.qq.com/cgi-bin/rss_index?sid=kv11Mb7-FYIwFxNe&amp;t=r_index&amp;source=qqmail" target="_blank" onmouseup="setCookie('r_tinfo', 'm_'+now(), null, null, 'qq.com');"><img src="frame_html_files/spacer02340f.gif" class="ico_reader">QQ阅读<span class="txt_red" id="reader_update" style="" title="您的QQ阅读有更新"><img src="frame_html_files/spacer02340f.gif" class="ico_reader_unread"></span></a></span>
+                        </div>
+                        <form id="frmSwitch" action="https://exmail.qq.com/cgi-bin/login" method="post" target="_black">
+                            <input name="fun" value="bizmail" type="hidden"><input name="dmtype" value="bizmail" type="hidden"><input value="qm_username=77041519; qm_sid=" name="ck" type="hidden"><input name="ls" value="" type="hidden"><input name="msk" value="" type="hidden">
+                        </form>
+                        <script>
+                            S("frmSwitch").ck.value = "qm_username=77041519; qm_sid="
+                        </script>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            createActionFrame(window);
+        </script>
+        <div class="topline_height" id="sepLineTd">
+            <div class="topline">
+                <div class="toplineimg left" id="imgLine">
+                </div>
+            </div>
+        </div>
+        <div id="qqplus_panel" class="wqbg qq_panel_btn" nowrap="" unselectable="on">
+        </div>
+        <form name="submit_form" action="/cgi-bin/foldermgr?sid=kv11Mb7-FYIwFxNe" method="POST" target="actionFrame">
+            <input name="sid" value="kv11Mb7-FYIwFxNe" type="hidden"><input name="fun" value="empty" type="hidden"><input name="folderid" type="hidden"><input name="loc" type="hidden"><input name="rk" type="hidden">
+        </form>
+        <script>
+            MarkTime(5, 'get folderlist');
+        </script>
+        <div class="fdbody bodybgbt">
+        </div>
+        <div class="newskinbody" id="leftPanel" oncontextmenu="navRightMenu(this,event)">
+            <div id="navBarDiv">
+                <ul class="navbar fdul" id="navBarTd">
+                    <li class="composepart fs" id="composebtn_td">
+                        <a md="0" initlized="true" id="composebtn" hidefocus="" href="https://mail.qq.com/cgi-bin/readtemplate?sid=kv11Mb7-FYIwFxNe&amp;t=compose&amp;s=cnew&amp;loc=frame_html,,,21" target="mainFrame">写信</a>
+                        <input class="composebtn" disabled="disabled" type="button">
+                    </li>
+                    <li class="checkpart fs">
+                        <a href="javascript:;" target="actionFrame" hidefocus="" onclick="recordReadedMailId(null);goUrlMainFrm('/cgi-bin/mail_list?sid=kv11Mb7-FYIwFxNe&amp;folderid=1&amp;page=0&amp;s=getmail&amp;today_tips=400&amp;loc=frame_html,,,22',true);switchFolder('folder_1');">收信</a>
+                        <input class="checkbtn" disabled="disabled" type="button">
+                    </li>
+                    <li class="addrpart fs">
+                        <a hidefocus="" href="https://mail.qq.com/cgi-bin/addr_listall?sid=kv11Mb7-FYIwFxNe&amp;sorttype=null&amp;category=common&amp;loc=frame_html,,,23" target="mainFrame">联系人</a>
+                        <input class="addrbtn" disabled="disabled" type="button">
+                    </li>
+                </ul>
+            </div>
+            <div id="navMidBar" class="listbg listflow">
+                <div style="overflow: hidden;" id="folder" class="folderDiv">
+                    <a id="detechFL"></a>
+                    <div>
+                        <div>
+                            <style>
+                                .max_width {
+                                    width: 110px;
+                                    overflow: hidden;
+                                }
+                            </style>
+                            <div id="OutFolder">
+                                <div id="SysFolderList">
+                                    <ul class="fdul">
+                                        <li id="folder_1_td" dr="1" class="fs" style="">
+                                            <a md="0" initlized="true" id="folder_1" onclick="switchFolder(this.id);" href="https://mail.qq.com/cgi-bin/mail_list?sid=kv11Mb7-FYIwFxNe&amp;folderid=1&amp;page=0&amp;s=inbox&amp;loc=folderlist,,,1" target="mainFrame" class="f_size" title="" hidefocus="">收件箱</a>
+                                        </li>
+                                        <li id="folder_starred_td" class="fs" dr="starred">
+                                            <a id="folder_starred" onclick="switchFolder(this.id);" href="https://mail.qq.com/cgi-bin/mail_list?sid=kv11Mb7-FYIwFxNe&amp;s=star&amp;folderid=all&amp;flag=star&amp;page=0&amp;need_folderlock=0&amp;fun=slock&amp;loc=folderlist,,,110&amp;topmails=0" target="mainFrame" class="f_size staradjust" title="" hidefocus="">星标邮件<input class="ico_input icon_folderlist_star" hidefocus="" type="button"></a>
+                                        </li>
+                                        <li id="folder_9_td" dr="9" class="fs" style="*margin-bottom:-1px;">
+                                            <a id="folder_9" onclick="switchFolder(this.id);" href="https://mail.qq.com/cgi-bin/readtemplate?sid=kv11Mb7-FYIwFxNe&amp;folderid=9&amp;page=0&amp;t=sms_list_v2&amp;loc=folderlist,,,9" target="mainFrame" class="f_size" title="" hidefocus="">短消息</a>
+                                        </li>
+                                        <li id="folder_8_td" dr="8" class="fs" style="">
+                                            <a id="folder_8" onclick="switchFolder(this.id);" href="https://mail.qq.com/cgi-bin/mail_list?sid=kv11Mb7-FYIwFxNe&amp;folderid=8&amp;page=0&amp;t=mail_list_group&amp;loc=folderlist,,,8" target="mainFrame" class="f_size" title="" hidefocus="">群邮件</a>
+                                        </li>
+                                        <li id="folder_4_td" dr="4" class="fs" style="">
+                                            <a id="folder_4" onclick="switchFolder(this.id);" href="https://mail.qq.com/cgi-bin/mail_list?sid=kv11Mb7-FYIwFxNe&amp;folderid=4&amp;page=0&amp;loc=folderlist,,,4" target="mainFrame" class="f_size" title="" hidefocus="">草稿箱</a>
+                                        </li>
+                                        <li id="folder_3_td" dr="3" class="fs" style="">
+                                            <a id="folder_3" onclick="switchFolder(this.id);" href="https://mail.qq.com/cgi-bin/mail_list?sid=kv11Mb7-FYIwFxNe&amp;folderid=3&amp;page=0&amp;topmails=0&amp;loc=folderlist,,,3" target="mainFrame" class="f_size" title="" hidefocus="">已发送</a>
+                                        </li>
+                                        <li id="folder_5_td" dr="5" class="fs" style="text-align:right;">
+                                            <a id="folder_5" onclick="switchFolder(this.id);" href="https://mail.qq.com/cgi-bin/mail_list?sid=kv11Mb7-FYIwFxNe&amp;folderid=5&amp;page=0&amp;loc=folderlist,,,5" target="mainFrame" class="f_size" title="" hidefocus="" style="text-align: left;">已删除</a>
+                                        </li>
+                                        <li id="folder_6_td" dr="6" class="fs" style="*margin-bottom:-1px;text-align:right;">
+                                            <a md="0" initlized="" id="folder_6" onclick="switchFolder(this.id);" href="https://mail.qq.com/cgi-bin/mail_list?sid=kv11Mb7-FYIwFxNe&amp;folderid=6&amp;page=0&amp;loc=folderlist,,,6" target="mainFrame" class="f_size" title="" hidefocus="" style="text-align: left;">垃圾箱</a>
+                                            <a href="javascript:;" target="leftFrame" onclick="if(emptyFolder()){doFolderEmpty(6, submit_form,'folderlist,,,10');}" class="nolinkbg normal fdleft empty_link" hidefocus="">[清空]</a>
+                                        </li>
+                                        <li id="folder_130_td" dr="130" class="fs" style="">
+                                            <a id="folder_130" onclick="switchFolder(this.id);" name="book" href="https://mail.qq.com/cgi-bin/mail_list?sid=kv11Mb7-FYIwFxNe&amp;folderid=130&amp;ftype=book&amp;page=0&amp;loc=folderlist,,,130" target="mainFrame" class="f_size" title="" hidefocus="">QQ邮件订阅</a>
+                                        </li>
+                                    </ul>
+                                    <div class="sepline">
+                                    </div>
+                                </div>
+                                <div id="ScrollFolder" style="position: relative; overflow: auto; height: 342px;">
+                                    <div style="height:3px;overflow:hidden;">
+                                    </div>
+                                    <div id="personalfoldersDiv" dp="personal">
+                                        <ul class="fdul">
+                                            <li class="fs" id="folder_personal_td" style="*margin-bottom:-2px;" dr="personal" dp="personal" nowrap="">
+                                                <a nowrap="" id="folder_personal" onclick="switchFolder(this.id);showFolders('personal', true)" href="https://mail.qq.com/cgi-bin/mail_list?sid=kv11Mb7-FYIwFxNe&amp;folderid=personal&amp;page=0&amp;stype=myfolders&amp;loc=folderlist,,,21" target="mainFrame" hidefocus="">我的文件夹</a>
+                                                <img src="frame_html_files/spacer02340f.gif" id="icon_personal" class="fd_on" onclick="showFolders('personal');" hidefocus="">
+                                            </li>
+                                        </ul>
+                                        <ul class="fdul" id="personalfolders" style="display:none;overflow:hidden;">
+                                            <li class="fs" id="folder_131_td" dr="131" dp="personal">
+                                                <a href="https://mail.qq.com/cgi-bin/mail_list?sid=kv11Mb7-FYIwFxNe&amp;folderid=131&amp;page=0" target="mainFrame" id="folder_131" name="personal" onclick="switchFolder(this.id);" title="watano" hidefocus="" class="fdlist_width">
+                                                    <div class="txtflow fdwidthmax">
+                                                        watano
+                                                    </div>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div id="popfoldersDiv" dp="pop">
+                                        <ul class="fdul">
+                                            <li class="fs" id="folder_pop_td" style="*margin-bottom:-2px;" dr="pop" dp="pop">
+                                                <a title="" md="0" initlized="" id="folder_pop" onclick="switchFolder(this.id);showFolders('pop', true)" href="https://mail.qq.com/cgi-bin/mail_list?sid=kv11Mb7-FYIwFxNe&amp;folderid=pop&amp;page=0&amp;ftype=pop&amp;stype=myotherinbox&amp;loc=folderlist,,,22" target="mainFrame" hidefocus="">其他邮箱</a>
+                                                <img src="frame_html_files/spacer02340f.gif" id="icon_pop" class="fd_off" onclick="showFolders('pop')" hidefocus="">
+                                            </li>
+                                        </ul>
+                                        <ul class="fdul" id="popfolders" style="overflow: hidden; height: auto;">
+                                            <li class="fs" id="folder_134_td" style="*margin-bottom:-2px;" dr="134" dp="pop">
+                                                <a md="0" initlized="true" id="folder_134" name="pop" onclick="switchFolder(this.id);" href="https://mail.qq.com/cgi-bin/mail_list?sid=kv11Mb7-FYIwFxNe&amp;folderid=134&amp;page=0&amp;ftype=pop" target="mainFrame" etitle="watano@gmail.com" acctid="3" title="watano@gmail.com 未读邮件 1 封" hidefocus="" class="fdlist_width">
+                                                    <div initlized="" title="watano@gmail.com">
+                                                        watan...
+                                                    </div>
+                                                    <input class="mailboxlist left gmail" type="button"></a>
+                                            </li>
+                                            <li class="fs" id="folder_132_td" style="*margin-bottom:-2px;" dr="132" dp="pop">
+                                                <a id="folder_132" name="pop" onclick="switchFolder(this.id);" href="https://mail.qq.com/cgi-bin/mail_list?sid=kv11Mb7-FYIwFxNe&amp;folderid=132&amp;page=0&amp;ftype=pop" target="mainFrame" etitle="watanoboy@163.com" acctid="1" title="watanoboy@163.com" hidefocus="" class="fdlist_width">
+                                                    <div class="txtflow fdwidthmax">
+                                                        watanoboy
+                                                    </div>
+                                                    <input class="mailboxlist left netease_sixthree" type="button"></a>
+                                            </li>
+                                            <li class="fs" id="folder_133_td" style="*margin-bottom:-2px;" dr="133" dp="pop">
+                                                <a id="folder_133" name="pop" onclick="switchFolder(this.id);" href="https://mail.qq.com/cgi-bin/mail_list?sid=kv11Mb7-FYIwFxNe&amp;folderid=133&amp;page=0&amp;ftype=pop" target="mainFrame" etitle="watano@live.com" acctid="2" title="watano@live.com" hidefocus="" class="fdlist_width">
+                                                    <div class="txtflow fdwidthmax">
+                                                        watano
+                                                    </div>
+                                                    <input class="mailboxlist left live" type="button"></a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div id="tagfoldersDiv" dp="tag">
+                                        <ul class="fdul " id="tagfolders" style="display:none;overflow:hidden;">
+                                        </ul>
+                                    </div>
+                                    <div class="sepline" style="margin-top:4px;">
+                                    </div>
+                                    <div class="sepline_height">
+                                    </div>
+                                    <ul class="fdul" id="my_note">
+                                        <li id="folder_11_td" class="fs">
+                                            <a id="folder_11" onclick="switchFolder(this.id);" hidefocus="" href="https://mail.qq.com/cgi-bin/bottle_panel?sid=kv11Mb7-FYIwFxNe&amp;t=bottle&amp;plpfrom=webmail&amp;loc=folderlist,,,33" target="mainFrame" class="normal drifticonadjust">漂流瓶<input class="ico_input drifticon" hidefocus="" type="button"></a>
+                                        </li>
+                                        <li class="fs fs_sep" style="">
+                                            <span class=""><a id="folder_card" href="https://mail.qq.com/cgi-bin/cardlist?today_tips=200&amp;sid=kv11Mb7-FYIwFxNe&amp;ListType=Cards&amp;t=card&amp;Cate1Idx=listall&amp;loc=folderlist,,,31" target="mainFrame" onclick="switchFolder(this.id);" hidefocus="">贺卡</a></span>
+                                            <a class="nolinkbg fdleft" style="cursor: default; text-decoration: none; float: none; padding: 0pt; margin: 0pt 3px;">|</a>
+                                            <span class=""><a id="folder_postcard" href="https://mail.qq.com/cgi-bin/readtemplate?t=compose_postcard&amp;sid=kv11Mb7-FYIwFxNe&amp;photogroupid=mh&amp;photoid=1&amp;loc=folderlist,,,38" hidefocus="" target="mainFrame">明信片</a></span>
+                                        </li>
+                                        <li class="fs fs_sep" style="">
+                                            <span><a href="https://mail.qq.com/cgi-bin/reminder_list?t=remind&amp;sid=kv11Mb7-FYIwFxNe&amp;sorttype=create&amp;filter=1&amp;fn=1&amp;loc=folderlist,,,39" target="mainFrame" id="folder_reminder" onclick="switchFolder(this.id);" hidefocus="">提醒</a></span>
+                                            <a class="nolinkbg fdleft" style="cursor: default; text-decoration: none; float: none; padding: 0pt; margin: 0pt 3px;">|</a>
+                                            <span><a href="https://mail.qq.com/cgi-bin/note_list?catid=0&amp;sid=kv11Mb7-FYIwFxNe&amp;info=1&amp;t=note_first_page&amp;loc=folderlist,,,32" target="mainFrame" id="folder_note" onclick="switchFolder(this.id);" hidefocus="" class="unfoldersel">记事本</a></span>
+                                        </li>
+                                        <li id="folder_ftn_td" class="fs">
+                                            <a id="folder_ftn" onclick="switchFolder(this.id);" hidefocus="" href="https://mail.qq.com/cgi-bin/ftnExs_files?sid=kv11Mb7-FYIwFxNe&amp;t=exs_ftn_files&amp;filetype=0&amp;listtype=self&amp;page=0&amp;pagesize=20&amp;loc=folderlist,,,35" target="mainFrame" class="normal f_size">文件中转站</a>
+                                        </li>
+                                        <li id="folder_reader_td" class="fs" style="">
+                                            <a md="0" initlized="true" title="253个好友更新" class=" bold bold bold bold bold bold bold bold bold bold bold bold bold bold bold bold bold bold bold bold bold bold bold bold bold bold" id="folder_reader" onclick="switchFolder(this.id);" hidefocus="" href="https://r.mail.qq.com/cgi-bin/reader_main?sid=kv11Mb7-FYIwFxNe&amp;t=r_index&amp;source=folderlist" target="mainFrame">阅读空间<span id="count_rss">(253)</span></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="navBottomTd" class="navbottom">
+            </div>
+        </div>
+        <script>
+            MarkTime(6, 'get today');
+        </script>
+        <div id="mainFrameContainer">
+            <iframe src="frame_html_files/setting5.htm" name="mainFrame" id="mainFrame" hidefocus="" frameborder="no" scrolling="auto">
+            </iframe>
+        </div>
+        <iframe name="leftFrame" id="leftFrame" src="javascript:'';" style="display: none;">
+        </iframe>
+        <script>
+            !S("detechFL") && !(S("folder").innerHTML = '') && (S("leftFrame").src = "/cgi-bin/folderlist?sid=kv11Mb7-FYIwFxNe&info=true");
+            MarkTime(7, 'page end');
+        </script>
+        <script type="text/javascript">
+            window.onload = function(){
+                var _oStatTimes = [], _nResTime = -1, _nJsReady = 0;
+                
+                if (window.MarkTime) {
+                    MarkTime(0, 'page onload');
+                    for (var i in MarkTime.oStamp) {
+                        _oStatTimes.push([i, MarkTime.oStamp[i]].join(":"));
+                    }
+                    _nResTime = MarkTime.oStamp['t1'] || -1;
+                }
+                
+                if (window.JsChecker) {
+                    if (JsChecker.check("all051550") && JsChecker.check("qmtool0509e8")) {
+                        _nJsReady = JsChecker.isreload ? 1 : 0;
+                    }
+                    else {
+                        _nJsReady = 2;
+                    }
+                }
+                
+                Cookie.g("tinfo").split("*").length == 3 &&
+                ((new Image).src = ['/cgi-bin/getinvestigate?sid=kv11Mb7-FYIwFxNe&stat=login&flowid=15653558&ph=s&res=', _nResTime, '&jsready=', _nJsReady, '&timestats=', _oStatTimes.join(";"), '&agenterr=', window.gbIsAgentErr ? 1 : 0, '&jseval=', typeof(gnQmToolLoad) == 'number' ? gnQmToolLoad : -1, '&screentype=web&screenWidth=', screen.width, '&screenHeight=', screen.height, '&ua=', decodeURIComponent(navigator.userAgent), window.QMApplet && QMApplet.isSupported && QMApplet.isSupported() && " JavaSupport"].join("")) &&
+                Cookie.s("tinfo", Cookie.g("tinfo").split("*")[0]);
+                setTimeout(function(){
+                    try {
+                        loadSignature();
+                    } 
+                    catch (_oError) {
+                    }
+                    loadJsFile("https://res.mail.qq.com/zh_CN/htmledition/js/profile_tips051acc.js", true);
+                    
+                    getReaderData(gsRssDomain + "/cgi-bin/reader_unread_count?first=1&sid=kv11Mb7-FYIwFxNe&t=reader_dataInit&u=-1683939497");
+                    setTimeout(function(){
+                        loadJsFile("https://res.mail.qq.com/zh_CN/htmledition/qqmaileditor/editor05170e.js", true);
+                        loadJsFile("https://res.mail.qq.com/zh_CN/htmledition/js/qmaddress0509e8.js", true);
+                        loadJsFile("https://res.mail.qq.com/zh_CN/htmledition/js/readmail2051600.js", true);
+                        setTimeout(function(){
+                            preLoad("js", "https://res.mail.qq.com/zh_CN/htmledition/js/", ["compose0509e8.js", "qmaddrinput0509e8.js"]);
+                        }, 200);
+                    }, 500);
+                }, 100);
+                window.onresize && window.onresize();
+            };
+            (window.onresize = resizeFolderList)();
+            rdVer("on", 2);
+        </script>
+        <span class="hide" v="108MS_used"></span>
+    </body>
+</html>
