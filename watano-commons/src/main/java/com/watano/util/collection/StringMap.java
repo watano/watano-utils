@@ -3,6 +3,7 @@ package com.watano.util.collection;
 import java.util.Hashtable;
 
 import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.text.StrBuilder;
 
 import com.watano.util.lang.SimpleValue;
 
@@ -22,15 +23,28 @@ public class StringMap extends Hashtable<String, String> {
 		}
 	}
 
-	public String toText() {
-		String text = "{";
-		int i = 0;
-		for (String k : keySet()) {
-			text += k + ":" + ((get(k) != null) ? get(k) : "null") + ((i == size() - 1) ? "" : ",\n");
-			i++;
+	public String toIniText() {
+		StrBuilder sb = new StrBuilder();
+		String[] itemNames = WArrays.getSortedKeys(this, new String[] {});
+		for (String item : itemNames) {
+			sb.append(item).append("=");
+			String value = get(item);
+			value = StringUtils.replace(value, "\r\n", "\n");
+			String[] lines = StringUtils.split(value, "\n");
+			if (lines != null && lines.length > 0) {
+				int i = 0;
+				for (String line : StringUtils.split(value, "\n")) {
+					if (i != 0) {
+						sb.append("\\");
+					}
+					sb.appendln(line);
+					i++;
+				}
+			} else {
+				sb.appendln(value);
+			}
 		}
-		text += "}";
-		return text;
+		return sb.toString();
 	}
 
 	@Override

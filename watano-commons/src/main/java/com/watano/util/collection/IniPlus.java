@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.text.StrBuilder;
 import org.apache.commons.lang3.text.StrSubstitutor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -21,7 +22,7 @@ import com.watano.util.lang.SimpleValue;
 public class IniPlus {
 	private static final Logger LOG = LoggerFactory.getLogger(IniPlus.class);
 
-	private StringMap p = new StringMap();
+	private StringMap data = new StringMap();
 	private final List<String> sections = new ArrayList<String>();
 	private Map<String, List<String>> sectionItemNames = new Hashtable<String, List<String>>();
 	private String parent = "";
@@ -67,16 +68,16 @@ public class IniPlus {
 			}
 			parent += ".";
 		} else if (line.startsWith("\\")) {
-			String v = p.get(current);
-			v += line.substring(1);
-			p.put(current, v);
+			String v = data.get(current);
+			v += "\n" + line.substring(1);
+			data.put(current, v);
 			addSectionItem(parent, current);
 		} else if (!line.startsWith("#") && line.indexOf("=") > 0) {
 			String k = parent + line.substring(0, line.indexOf("="));
 			String v = line.substring(line.indexOf("=") + 1);
 			v = v.trim();
 			current = k;
-			p.put(k, v);
+			data.put(k, v);
 			addSectionItem(parent, current);
 		}
 		return this;
@@ -109,13 +110,13 @@ public class IniPlus {
 	}
 
 	public void eval() {
-		StrSubstitutor sub = new StrSubstitutor(p);
-		for (String key : p.keySet()) {
-			if (p.get(key) instanceof String) {
-				String value = p.get(key);
+		StrSubstitutor sub = new StrSubstitutor(data);
+		for (String key : data.keySet()) {
+			if (data.get(key) instanceof String) {
+				String value = data.get(key);
 				if (StringUtils.isNotBlank(key)) {
 					value = sub.replace(value);
-					p.put(key, value);
+					data.put(key, value);
 				}
 			}
 		}
@@ -141,20 +142,20 @@ public class IniPlus {
 
 	private KeyValue<String, String> matched(String name, String match) {
 		name = name.trim();
-		KeyValue<String, String> matchKV = new KeyValue<String, String>(name, p.get(name));
+		KeyValue<String, String> matchKV = new KeyValue<String, String>(name, data.get(name));
 		if (matchKV.getValue() == null) {
 			matchKV.setKey(null);
-			for (String k : p.keySet()) {
+			for (String k : data.keySet()) {
 				if (StringUtil.match(name, (k.indexOf(".") < 0) ? ("*." + k) : k)
 						&& (matchKV.getKey() == null
 								|| StringUtils.countMatches(matchKV.getKey(), ".") < StringUtils.countMatches(k, ".") || (StringUtils.countMatches(matchKV.getKey(), ".") == StringUtils.countMatches(k, ".") && matchKV.getKey().length() < k.length()))) {
-					matchKV.set(k, p.get(k));
+					matchKV.set(k, data.get(k));
 				}
 			}
 		}
 		if (match != null
 				&& (StringUtils.countMatches(match, ".") > StringUtils.countMatches(matchKV.getKey(), ".") || (StringUtils.countMatches(match, ".") == StringUtils.countMatches(matchKV.getKey(), ".") && match.length() > matchKV.getKey().length()))) {
-			matchKV.set(match, p.get(match));
+			matchKV.set(match, data.get(match));
 		}
 		return matchKV;
 	}
@@ -178,9 +179,9 @@ public class IniPlus {
 
 	public StringMap getSection(String section) {
 		StringMap mapsection = new StringMap();
-		for (String k : p.keySet()) {
+		for (String k : data.keySet()) {
 			if (k.startsWith(section + ".")) {
-				mapsection.put(k.substring((section + ".").length()), p.get(k));
+				mapsection.put(k.substring((section + ".").length()), data.get(k));
 			}
 		}
 		return mapsection;
@@ -199,7 +200,7 @@ public class IniPlus {
 
 	public List<String> getMatchKeys(String search) {
 		List<String> matchKeys = new ArrayList<String>();
-		for (String key : p.keySet()) {
+		for (String key : data.keySet()) {
 			if (StringUtils.contains(key, search)) {
 				matchKeys.add(key);
 			}
@@ -207,7 +208,16 @@ public class IniPlus {
 		return matchKeys;
 	}
 
-	public StringMap getP() {
-		return p;
+	public StringMap getData() {
+		return data;
+	}
+
+	public String toIniText() {
+		StrBuilder sb = new StrBuilder();
+		for (String section : getSections()) {
+			sb.append("[").append(section).appendln("]");
+			sb.appendln(getSection(section).toIniText());
+		}
+		return sb.toString();
 	}
 }

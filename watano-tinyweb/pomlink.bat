@@ -1,82 +1,55 @@
-set M2_REPO=e:\documents\.m2\repository
-set liblinkdir=WebRoot\WEB-INF\lib
+@echo off
+@for /F "delims=" %%I in ("%~dp0") do @set projectHome=%%~fI
+set liblinkdir=%projectHome%WebRoot\WEB-INF\lib
 rmdir /s /q WebRoot
-mklink /d WebRoot .\src\main\webapp\
+mklink /d %projectHome%WebRoot %projectHome%src\main\webapp\
 rmdir /s /q %liblinkdir%
 mkdir %liblinkdir%
 mkdir %liblinkdir%\sources
-mklink /h %liblinkdir%\spring-web-3.1.1.RELEASE.jar %M2_REPO%\org\springframework\spring-web\3.1.1.RELEASE\spring-web-3.1.1.RELEASE.jar
-mklink /h %liblinkdir%\sources\spring-web-3.1.1.RELEASE-sources.jar %M2_REPO%\org\springframework\spring-web\3.1.1.RELEASE\spring-web-3.1.1.RELEASE-sources.jar
-mklink /h %liblinkdir%\jackson-xc-1.9.3.jar %M2_REPO%\org\codehaus\jackson\jackson-xc\1.9.3\jackson-xc-1.9.3.jar
-mklink /h %liblinkdir%\sources\jackson-xc-1.9.3-sources.jar %M2_REPO%\org\codehaus\jackson\jackson-xc\1.9.3\jackson-xc-1.9.3-sources.jar
-mklink /h %liblinkdir%\ehcache-core-2.5.2.jar %M2_REPO%\net\sf\ehcache\ehcache-core\2.5.2\ehcache-core-2.5.2.jar
-mklink /h %liblinkdir%\sources\ehcache-core-2.5.2-sources.jar %M2_REPO%\net\sf\ehcache\ehcache-core\2.5.2\ehcache-core-2.5.2-sources.jar
-mklink /h %liblinkdir%\spring-tx-3.1.1.RELEASE.jar %M2_REPO%\org\springframework\spring-tx\3.1.1.RELEASE\spring-tx-3.1.1.RELEASE.jar
-mklink /h %liblinkdir%\sources\spring-tx-3.1.1.RELEASE-sources.jar %M2_REPO%\org\springframework\spring-tx\3.1.1.RELEASE\spring-tx-3.1.1.RELEASE-sources.jar
-mklink /h %liblinkdir%\guava-12.0.jar %M2_REPO%\com\google\guava\guava\12.0\guava-12.0.jar
-mklink /h %liblinkdir%\sources\guava-12.0-sources.jar %M2_REPO%\com\google\guava\guava\12.0\guava-12.0-sources.jar
-mklink /h %liblinkdir%\slf4j-api-1.6.4.jar %M2_REPO%\org\slf4j\slf4j-api\1.6.4\slf4j-api-1.6.4.jar
-mklink /h %liblinkdir%\sources\slf4j-api-1.6.4-sources.jar %M2_REPO%\org\slf4j\slf4j-api\1.6.4\slf4j-api-1.6.4-sources.jar
-mklink /h %liblinkdir%\hamcrest-core-1.3.RC2.jar %M2_REPO%\org\hamcrest\hamcrest-core\1.3.RC2\hamcrest-core-1.3.RC2.jar
-mklink /h %liblinkdir%\sources\hamcrest-core-1.3.RC2-sources.jar %M2_REPO%\org\hamcrest\hamcrest-core\1.3.RC2\hamcrest-core-1.3.RC2-sources.jar
-mklink /h %liblinkdir%\commons-lang3-3.1.jar %M2_REPO%\org\apache\commons\commons-lang3\3.1\commons-lang3-3.1.jar
-mklink /h %liblinkdir%\sources\commons-lang3-3.1-sources.jar %M2_REPO%\org\apache\commons\commons-lang3\3.1\commons-lang3-3.1-sources.jar
-mklink /h %liblinkdir%\spring-aop-3.1.1.RELEASE.jar %M2_REPO%\org\springframework\spring-aop\3.1.1.RELEASE\spring-aop-3.1.1.RELEASE.jar
-mklink /h %liblinkdir%\sources\spring-aop-3.1.1.RELEASE-sources.jar %M2_REPO%\org\springframework\spring-aop\3.1.1.RELEASE\spring-aop-3.1.1.RELEASE-sources.jar
-mklink /h %liblinkdir%\jcl-over-slf4j-1.6.4.jar %M2_REPO%\org\slf4j\jcl-over-slf4j\1.6.4\jcl-over-slf4j-1.6.4.jar
-mklink /h %liblinkdir%\sources\jcl-over-slf4j-1.6.4-sources.jar %M2_REPO%\org\slf4j\jcl-over-slf4j\1.6.4\jcl-over-slf4j-1.6.4-sources.jar
-mklink /h %liblinkdir%\spring-jdbc-3.1.1.RELEASE.jar %M2_REPO%\org\springframework\spring-jdbc\3.1.1.RELEASE\spring-jdbc-3.1.1.RELEASE.jar
-mklink /h %liblinkdir%\sources\spring-jdbc-3.1.1.RELEASE-sources.jar %M2_REPO%\org\springframework\spring-jdbc\3.1.1.RELEASE\spring-jdbc-3.1.1.RELEASE-sources.jar
-mklink /h %liblinkdir%\spring-expression-3.1.1.RELEASE.jar %M2_REPO%\org\springframework\spring-expression\3.1.1.RELEASE\spring-expression-3.1.1.RELEASE.jar
-mklink /h %liblinkdir%\sources\spring-expression-3.1.1.RELEASE-sources.jar %M2_REPO%\org\springframework\spring-expression\3.1.1.RELEASE\spring-expression-3.1.1.RELEASE-sources.jar
-mklink /h %liblinkdir%\spring-webmvc-3.1.1.RELEASE.jar %M2_REPO%\org\springframework\spring-webmvc\3.1.1.RELEASE\spring-webmvc-3.1.1.RELEASE.jar
-mklink /h %liblinkdir%\sources\spring-webmvc-3.1.1.RELEASE-sources.jar %M2_REPO%\org\springframework\spring-webmvc\3.1.1.RELEASE\spring-webmvc-3.1.1.RELEASE-sources.jar
-mklink /h %liblinkdir%\spring-context-support-3.1.1.RELEASE.jar %M2_REPO%\org\springframework\spring-context-support\3.1.1.RELEASE\spring-context-support-3.1.1.RELEASE.jar
-mklink /h %liblinkdir%\sources\spring-context-support-3.1.1.RELEASE-sources.jar %M2_REPO%\org\springframework\spring-context-support\3.1.1.RELEASE\spring-context-support-3.1.1.RELEASE-sources.jar
-mklink /h %liblinkdir%\nutz-1.b.43.jar %M2_REPO%\org\nutz\nutz\1.b.43\nutz-1.b.43.jar
-mklink /h %liblinkdir%\sources\nutz-1.b.43-sources.jar %M2_REPO%\org\nutz\nutz\1.b.43\nutz-1.b.43-sources.jar
-mklink /h %liblinkdir%\mysql-connector-java-5.1.20.jar %M2_REPO%\mysql\mysql-connector-java\5.1.20\mysql-connector-java-5.1.20.jar
-mklink /h %liblinkdir%\sources\mysql-connector-java-5.1.20-sources.jar %M2_REPO%\mysql\mysql-connector-java\5.1.20\mysql-connector-java-5.1.20-sources.jar
-mklink /h %liblinkdir%\spring-test-3.1.1.RELEASE.jar %M2_REPO%\org\springframework\spring-test\3.1.1.RELEASE\spring-test-3.1.1.RELEASE.jar
-mklink /h %liblinkdir%\sources\spring-test-3.1.1.RELEASE-sources.jar %M2_REPO%\org\springframework\spring-test\3.1.1.RELEASE\spring-test-3.1.1.RELEASE-sources.jar
-mklink /h %liblinkdir%\druid-0.2.1.jar %M2_REPO%\com\alibaba\druid\0.2.1\druid-0.2.1.jar
-mklink /h %liblinkdir%\sources\druid-0.2.1-sources.jar %M2_REPO%\com\alibaba\druid\0.2.1\druid-0.2.1-sources.jar
-mklink /h %liblinkdir%\jackson-mapper-asl-1.9.3.jar %M2_REPO%\org\codehaus\jackson\jackson-mapper-asl\1.9.3\jackson-mapper-asl-1.9.3.jar
-mklink /h %liblinkdir%\sources\jackson-mapper-asl-1.9.3-sources.jar %M2_REPO%\org\codehaus\jackson\jackson-mapper-asl\1.9.3\jackson-mapper-asl-1.9.3-sources.jar
-mklink /h %liblinkdir%\jackson-core-asl-1.9.3.jar %M2_REPO%\org\codehaus\jackson\jackson-core-asl\1.9.3\jackson-core-asl-1.9.3.jar
-mklink /h %liblinkdir%\sources\jackson-core-asl-1.9.3-sources.jar %M2_REPO%\org\codehaus\jackson\jackson-core-asl\1.9.3\jackson-core-asl-1.9.3-sources.jar
-mklink /h %liblinkdir%\spring-beans-3.1.1.RELEASE.jar %M2_REPO%\org\springframework\spring-beans\3.1.1.RELEASE\spring-beans-3.1.1.RELEASE.jar
-mklink /h %liblinkdir%\sources\spring-beans-3.1.1.RELEASE-sources.jar %M2_REPO%\org\springframework\spring-beans\3.1.1.RELEASE\spring-beans-3.1.1.RELEASE-sources.jar
-mklink /h %liblinkdir%\joda-time-2.1.jar %M2_REPO%\joda-time\joda-time\2.1\joda-time-2.1.jar
-mklink /h %liblinkdir%\sources\joda-time-2.1-sources.jar %M2_REPO%\joda-time\joda-time\2.1\joda-time-2.1-sources.jar
-mklink /h %liblinkdir%\poi-3.8.jar %M2_REPO%\org\apache\poi\poi\3.8\poi-3.8.jar
-mklink /h %liblinkdir%\sources\poi-3.8-sources.jar %M2_REPO%\org\apache\poi\poi\3.8\poi-3.8-sources.jar
-mklink /h %liblinkdir%\jackson-jaxrs-1.9.3.jar %M2_REPO%\org\codehaus\jackson\jackson-jaxrs\1.9.3\jackson-jaxrs-1.9.3.jar
-mklink /h %liblinkdir%\sources\jackson-jaxrs-1.9.3-sources.jar %M2_REPO%\org\codehaus\jackson\jackson-jaxrs\1.9.3\jackson-jaxrs-1.9.3-sources.jar
-mklink /h %liblinkdir%\commons-codec-1.6.jar %M2_REPO%\commons-codec\commons-codec\1.6\commons-codec-1.6.jar
-mklink /h %liblinkdir%\sources\commons-codec-1.6-sources.jar %M2_REPO%\commons-codec\commons-codec\1.6\commons-codec-1.6-sources.jar
-mklink /h %liblinkdir%\aopalliance-1.0.jar %M2_REPO%\aopalliance\aopalliance\1.0\aopalliance-1.0.jar
-mklink /h %liblinkdir%\sources\aopalliance-1.0-sources.jar %M2_REPO%\aopalliance\aopalliance\1.0\aopalliance-1.0-sources.jar
-mklink /h %liblinkdir%\slf4j-log4j12-1.6.4.jar %M2_REPO%\org\slf4j\slf4j-log4j12\1.6.4\slf4j-log4j12-1.6.4.jar
-mklink /h %liblinkdir%\sources\slf4j-log4j12-1.6.4-sources.jar %M2_REPO%\org\slf4j\slf4j-log4j12\1.6.4\slf4j-log4j12-1.6.4-sources.jar
-mklink /h %liblinkdir%\junit-4.10.jar %M2_REPO%\junit\junit\4.10\junit-4.10.jar
-mklink /h %liblinkdir%\sources\junit-4.10-sources.jar %M2_REPO%\junit\junit\4.10\junit-4.10-sources.jar
-mklink /h %liblinkdir%\spring-aspects-3.1.1.RELEASE.jar %M2_REPO%\org\springframework\spring-aspects\3.1.1.RELEASE\spring-aspects-3.1.1.RELEASE.jar
-mklink /h %liblinkdir%\sources\spring-aspects-3.1.1.RELEASE-sources.jar %M2_REPO%\org\springframework\spring-aspects\3.1.1.RELEASE\spring-aspects-3.1.1.RELEASE-sources.jar
-mklink /h %liblinkdir%\watano-commons-1.0.jar %M2_REPO%\com\watano\watano-commons\1.0\watano-commons-1.0.jar
-mklink /h %liblinkdir%\sources\watano-commons-1.0-sources.jar %M2_REPO%\com\watano\watano-commons\1.0\watano-commons-1.0-sources.jar
-mklink /h %liblinkdir%\spring-context-3.1.1.RELEASE.jar %M2_REPO%\org\springframework\spring-context\3.1.1.RELEASE\spring-context-3.1.1.RELEASE.jar
-mklink /h %liblinkdir%\sources\spring-context-3.1.1.RELEASE-sources.jar %M2_REPO%\org\springframework\spring-context\3.1.1.RELEASE\spring-context-3.1.1.RELEASE-sources.jar
-mklink /h %liblinkdir%\jsr305-2.0.0.jar %M2_REPO%\com\google\code\findbugs\jsr305\2.0.0\jsr305-2.0.0.jar
-mklink /h %liblinkdir%\sources\jsr305-2.0.0-sources.jar %M2_REPO%\com\google\code\findbugs\jsr305\2.0.0\jsr305-2.0.0-sources.jar
-mklink /h %liblinkdir%\spring-core-3.1.1.RELEASE.jar %M2_REPO%\org\springframework\spring-core\3.1.1.RELEASE\spring-core-3.1.1.RELEASE.jar
-mklink /h %liblinkdir%\sources\spring-core-3.1.1.RELEASE-sources.jar %M2_REPO%\org\springframework\spring-core\3.1.1.RELEASE\spring-core-3.1.1.RELEASE-sources.jar
-mklink /h %liblinkdir%\spring-asm-3.1.1.RELEASE.jar %M2_REPO%\org\springframework\spring-asm\3.1.1.RELEASE\spring-asm-3.1.1.RELEASE.jar
-mklink /h %liblinkdir%\sources\spring-asm-3.1.1.RELEASE-sources.jar %M2_REPO%\org\springframework\spring-asm\3.1.1.RELEASE\spring-asm-3.1.1.RELEASE-sources.jar
-mklink /h %liblinkdir%\pinyin4j-2.5.0.jar %M2_REPO%\net\sourceforge\pinyin4j\pinyin4j\2.5.0\pinyin4j-2.5.0.jar
-mklink /h %liblinkdir%\sources\pinyin4j-2.5.0-sources.jar %M2_REPO%\net\sourceforge\pinyin4j\pinyin4j\2.5.0\pinyin4j-2.5.0-sources.jar
-mklink /h %liblinkdir%\commons-logging-1.1.1.jar %M2_REPO%\commons-logging\commons-logging\1.1.1\commons-logging-1.1.1.jar
-mklink /h %liblinkdir%\sources\commons-logging-1.1.1-sources.jar %M2_REPO%\commons-logging\commons-logging\1.1.1\commons-logging-1.1.1-sources.jar
-mklink /h %liblinkdir%\log4j-1.2.16.jar %M2_REPO%\log4j\log4j\1.2.16\log4j-1.2.16.jar
-mklink /h %liblinkdir%\sources\log4j-1.2.16-sources.jar %M2_REPO%\log4j\log4j\1.2.16\log4j-1.2.16-sources.jar
-pause
+call :wlink aopalliance\aopalliance\1.0 aopalliance-1.0
+call :wlink commons-codec\commons-codec\1.6 commons-codec-1.6
+call :wlink org\apache\commons\commons-lang3\3.1 commons-lang3-3.1
+call :wlink commons-logging\commons-logging\1.1.1 commons-logging-1.1.1
+call :wlink com\alibaba\druid\0.2.2 druid-0.2.2
+call :wlink net\sf\ehcache\ehcache-core\2.5.2 ehcache-core-2.5.2
+call :wlink com\google\guava\guava\12.0 guava-12.0
+call :wlink org\hamcrest\hamcrest-core\1.3.RC2 hamcrest-core-1.3.RC2
+call :wlink org\codehaus\jackson\jackson-core-asl\1.9.7 jackson-core-asl-1.9.7
+call :wlink org\codehaus\jackson\jackson-jaxrs\1.9.7 jackson-jaxrs-1.9.7
+call :wlink org\codehaus\jackson\jackson-mapper-asl\1.9.7 jackson-mapper-asl-1.9.7
+call :wlink org\codehaus\jackson\jackson-xc\1.9.7 jackson-xc-1.9.7
+call :wlink org\slf4j\jcl-over-slf4j\1.6.4 jcl-over-slf4j-1.6.4
+call :wlink joda-time\joda-time\2.1 joda-time-2.1
+call :wlink com\google\code\findbugs\jsr305\2.0.0 jsr305-2.0.0
+call :wlink junit\junit\4.10 junit-4.10
+call :wlink log4j\log4j\1.2.16 log4j-1.2.16
+call :wlink mysql\mysql-connector-java\5.1.20 mysql-connector-java-5.1.20
+call :wlink org\nutz\nutz\1.b.43 nutz-1.b.43
+call :wlink net\sourceforge\pinyin4j\pinyin4j\2.5.0 pinyin4j-2.5.0
+call :wlink org\apache\poi\poi\3.8 poi-3.8
+call :wlink org\slf4j\slf4j-api\1.6.4 slf4j-api-1.6.4
+call :wlink org\slf4j\slf4j-log4j12\1.6.4 slf4j-log4j12-1.6.4
+call :wlink org\springframework\spring-aop\3.1.1.RELEASE spring-aop-3.1.1.RELEASE
+call :wlink org\springframework\spring-asm\3.1.1.RELEASE spring-asm-3.1.1.RELEASE
+call :wlink org\springframework\spring-aspects\3.1.1.RELEASE spring-aspects-3.1.1.RELEASE
+call :wlink org\springframework\spring-beans\3.1.1.RELEASE spring-beans-3.1.1.RELEASE
+call :wlink org\springframework\spring-context\3.1.1.RELEASE spring-context-3.1.1.RELEASE
+call :wlink org\springframework\spring-context-support\3.1.1.RELEASE spring-context-support-3.1.1.RELEASE
+call :wlink org\springframework\spring-core\3.1.1.RELEASE spring-core-3.1.1.RELEASE
+call :wlink org\springframework\spring-expression\3.1.1.RELEASE spring-expression-3.1.1.RELEASE
+call :wlink org\springframework\spring-jdbc\3.1.1.RELEASE spring-jdbc-3.1.1.RELEASE
+call :wlink org\springframework\spring-test\3.1.1.RELEASE spring-test-3.1.1.RELEASE
+call :wlink org\springframework\spring-tx\3.1.1.RELEASE spring-tx-3.1.1.RELEASE
+call :wlink org\springframework\spring-web\3.1.1.RELEASE spring-web-3.1.1.RELEASE
+call :wlink org\springframework\spring-webmvc\3.1.1.RELEASE spring-webmvc-3.1.1.RELEASE
+call :wlink com\watano\watano-commons\1.1 watano-commons-1.1
+goto :end
+
+:wlink
+echo mklink==%1\%2.jar
+mklink /h %liblinkdir%\%2.jar %M2_REPO%\%1\%2.jar
+mklink /h %liblinkdir%\sources\%2.jar %M2_REPO%\%1\%2-sources.jar
+goto :eof
+
+:end
+echo pom mklink end!!!!!!!!!!!!!!!!!!!!!!!

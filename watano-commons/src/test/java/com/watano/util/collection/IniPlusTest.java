@@ -21,18 +21,18 @@ public class IniPlusTest {
 			assertEquals(iniplus.value("Category", null, "report.RptSalesGoodsDef", "salesOrderItem"), "3");
 			assertEquals(iniplus.value("Category", null, "salesOrderItem"), "3");
 			assertEquals(iniplus.value("Category", null), "1");
-			assertSame(iniplus.getP().intValue("Category"), 1);
-			assertSame(iniplus.getP().intDefaultValue(2, "Category"), 1);
-			assertNull(iniplus.getP().intValue("CategoryXXX"));
-			assertSame(iniplus.getP().intDefaultValue(2, "CategoryXXX"), 2);
+			assertSame(iniplus.getData().intValue("Category"), 1);
+			assertSame(iniplus.getData().intDefaultValue(2, "Category"), 1);
+			assertNull(iniplus.getData().intValue("CategoryXXX"));
+			assertSame(iniplus.getData().intDefaultValue(2, "CategoryXXX"), 2);
 			assertNull(iniplus.value("CategoryXXX", null));
-			iniplus.getP().put("CategoryXXX", "abc");
+			iniplus.getData().put("CategoryXXX", "abc");
 			assertEquals(iniplus.value("CategoryXXX", null), "abc");
 
 			assertEquals(iniplus.value("salesOrderItemGroup.Category", ""), "3");
 			assertSame(iniplus.getSection("salesOrderItemGroup").intValue("Category"), 3);
 			assertSame(iniplus.getSection("salesOrderItemGroup").intValue("Category", null), 3);
-			iniplus.getP().put("salesOrderItemGroup.Category", "4");
+			iniplus.getData().put("salesOrderItemGroup.Category", "4");
 			assertEquals(iniplus.value("salesOrderItemGroup.Category", ""), "4");
 			assertSame(iniplus.getSection("salesOrderItemGroup").intValue("Category"), 4);
 
@@ -46,11 +46,14 @@ public class IniPlusTest {
 
 			iniplus = new IniPlus("classpath:pom_base.ini");
 			assertEquals(iniplus.value("repositories.repo1", ""), "http://repo1.maven.org/maven2");
+			assertEquals(iniplus.getData().strValue("plugin-configurations.maven-surefire-plugin"),
+					"<includes>\n<include>**/*Test.java</include>\n</includes>");
 			iniplus.fill(".\\templates\\pom.ini");
 			assertEquals(iniplus.value("groupId", ""), "com.watano");
-			LOG.debug(iniplus.getP().toText());
+			LOG.debug(iniplus.getData().toIniText());
 			assertEquals(iniplus.value("plugin-exclusions.maven-source-plugin.goals", ""), "jar");
 			assertArrayEquals(iniplus.getValues("plugin-exclusions.xtend-maven-plugin.goals", ""), new String[] { "compile", "testCompile" });
+			LOG.info(iniplus.toIniText());
 		} catch (IOException e) {
 			LOG.error(e.getMessage(), e);
 		}

@@ -11,10 +11,8 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.ResultSetExtractor;
 import org.springframework.jdbc.core.RowMapper;
 
-import com.watano.util.jdbc.JdbcTemplateExTest;
-
 public class PageResultSetExtractor<T> implements ResultSetExtractor<List<T>> {
-	private static final Logger LOG = LoggerFactory.getLogger(JdbcTemplateExTest.class);
+	private static final Logger LOG = LoggerFactory.getLogger(PageResultSetExtractor.class);
 	private RowMapper<T> rowMapper = null;
 	private int start = 0;
 	private int limit = 0;

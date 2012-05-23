@@ -101,7 +101,7 @@ public class BaseCodeGen {
 			sectionItemNames.putAll(inis.getSectionItemNames());
 		}
 		params.put("__section_item_names__", sectionItemNames);
-		params.putAll(inis.getP());
+		params.putAll(inis.getData());
 	}
 
 	public void gen(String tpl) {

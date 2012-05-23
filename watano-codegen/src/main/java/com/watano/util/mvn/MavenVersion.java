@@ -17,7 +17,6 @@ import java.util.jar.JarFile;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 
-import org.apache.commons.io.IOUtils;
 import org.apache.log4j.Logger;
 
 public class MavenVersion {
@@ -88,9 +87,15 @@ public class MavenVersion {
 					ret.put(name, parsePomProperties(file.length(), in));
 				}
 			} catch (IOException e) {
-				e.printStackTrace();
+				LOG.error(e.getMessage(), e);
 			} finally {
-				IOUtils.closeQuietly(zipFile);
+				if (zipFile != null) {
+					try {
+						zipFile.close();
+					} catch (IOException e) {
+						LOG.error(e.getMessage(), e);
+					}
+				}
 			}
 		}
 		if (ret.isEmpty()) {

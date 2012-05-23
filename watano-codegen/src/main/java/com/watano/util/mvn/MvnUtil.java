@@ -11,11 +11,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
-import java.util.Map;
 import java.util.Properties;
 
 import org.apache.commons.io.FileUtils;
-import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.text.StrBuilder;
 import org.apache.maven.model.Build;
@@ -33,6 +31,7 @@ import org.codehaus.plexus.util.xml.pull.XmlPullParserException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.watano.util.ProcessUtil;
 import com.watano.util.collection.IniPlus;
 import com.watano.util.collection.StringMap;
 import com.watano.util.collection.WArrays;
@@ -70,32 +69,14 @@ public class MvnUtil {
 		//invoke method
 		if ("pomxml".equalsIgnoreCase(method.trim())) {
 			Model model = buildPomXmlByIni(srcDir + "pom.ini");
-			FileUtils.writeStringToFile(
-					new File(outDir + ".classpath"),
-					genClasspath(model).toString(),
-					encoding, false
-					);
-
-			FileUtils.writeStringToFile(
-					new File(outDir + "pomlink.bat"),
-					genPomlinkBat(model).toString(),
-					encoding, false
-					);
-
-			writePomXml(model, new FileWriter(outDir + "pom.xml"));
+			//			writingFile(outDir + ".classpath", genClasspath(model), encoding);
+			writingFile(outDir + "pomlink.bat", genPomlinkBat(model), encoding);
+			writePomXml(model, outDir + "pom.xml");
 		} else if ("pomini".equalsIgnoreCase(method.trim())) {
 			Model model = parsePomXml(srcDir + "pom.xml");
-			FileUtils.writeStringToFile(
-					new File(outDir + "pom.ini"),
-					genPomIni(model).toString(),
-					encoding, false
-					);
+			writingFile(outDir + "pom.ini", genPomIni(model), encoding);
 		} else if ("pom_baseIni".equalsIgnoreCase(method.trim())) {
-			FileUtils.writeStringToFile(
-					new File(m2Dir + "\\pom_base.ini"),
-					genPom_baseIni(m2Dir + "\\pom_base.ini").toString(),
-					encoding, false
-					);
+			writingFile(m2Dir + "\\pom_base.ini", genPom_baseIni(m2Dir + "\\pom_base.ini"), encoding);
 		} else if ("upversions".equalsIgnoreCase(method.trim())) {
 			upversions(m2Dir + "\\pom_base.ini", encoding);
 		} else {
@@ -113,9 +94,18 @@ public class MvnUtil {
 		}
 	}
 
-	//FIXME
+	private static void writingFile(String filePath, String text, String encoding) {
+		try {
+			LOG.info("writingFile:" + filePath);
+			FileUtils.writeStringToFile(new File(filePath), text, encoding, false);
+		} catch (IOException e) {
+			LOG.error(e.getMessage(), e);
+		}
+
+	}
+
 	public static String genPom_baseIni(String baseini) throws IOException {
-		return genIniPlusSections(new IniPlus(baseini));
+		return new IniPlus(baseini).toIniText();
 	}
 
 	public static void upversions(String baseini, String encoding) throws IOException, XmlPullParserException {
@@ -154,22 +144,14 @@ public class MvnUtil {
 		}
 		try {
 			//backup the old pom_base.ini file
-			FileUtils.writeStringToFile(
-					new File(m2Dir + "\\pom_base.old.ini"),
-					genIniPlusSections(pombaseini),
-					encoding, false
-					);
+			writingFile(m2Dir + "\\pom_base.old.ini", pombaseini.toIniText(), encoding);
 
 			String pomxml = ".\\target\\pom.xml";
 			FileUtils.deleteQuietly(new File(pomxml + ".versionsBackup"));
-			writePomXml(model, new FileWriter(pomxml));
+			writePomXml(model, pomxml);
 			//run mvn versions:use-latest-releases
-			Process process = Runtime.getRuntime().exec(
-					mvnHome + "\\bin\\mvn.bat versions:use-latest-releases",
-					null,
-					new File(".\\target"));
-			IOUtils.copy(process.getInputStream(), System.err);
-			process.destroy();
+			ProcessUtil.exec(".\\target", System.err,
+					mvnHome + "\\bin\\mvn.bat versions:use-latest-releases");
 
 			//parse pom.xml
 			Model newModel = parsePomXml(pomxml);
@@ -183,7 +165,7 @@ public class MvnUtil {
 					if (StringUtils.isBlank(keep_versions.strValue(aid))) {
 						updates.add(d.getGroupId()
 								+ ":" + d.getArtifactId() + ":" + oldVersion + "==>" + d.getVersion());
-						pombaseini.getP().put("artifacts." + aid, d.getGroupId() + "," + d.getVersion());
+						pombaseini.getData().put("artifacts." + aid, d.getGroupId() + "," + d.getVersion());
 					}
 				}
 			}
@@ -194,11 +176,7 @@ public class MvnUtil {
 				for (String upmsg : updates) {
 					LOG.info(upmsg);
 				}
-				FileUtils.writeStringToFile(
-						new File(m2Dir + "\\pom_base.ini"),
-						genIniPlusSections(pombaseini),
-						encoding, false
-						);
+				writingFile(m2Dir + "\\pom_base.ini", pombaseini.toIniText(), encoding);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -206,6 +184,7 @@ public class MvnUtil {
 	}
 
 	public static Model parsePomXml(String pomxml) throws IOException, XmlPullParserException {
+		LOG.info("parsePomXml:" + pomxml);
 		File pomXmlFile = new File(pomxml);
 		FileReader reader = new FileReader(pomXmlFile);
 		try {
@@ -224,8 +203,14 @@ public class MvnUtil {
 		new MavenXpp3Writer().write(writer, model);
 	}
 
+	public static void writePomXml(Model model, String filePath) throws IOException {
+		LOG.info("writePomXml:" + filePath);
+		writePomXml(model, new FileWriter(filePath));
+	}
+
 	//build model by pom.ini
 	public static Model buildPomXmlByIni(String iniFile) throws XmlPullParserException, IOException {
+		LOG.info("buildPomXmlByIni:" + iniFile);
 		Model model = new Model();
 		IniPlus ini = new IniPlus(m2Dir + "\\pom_base.ini");
 		ini.fill(iniFile);
@@ -273,8 +258,7 @@ public class MvnUtil {
 			String config = ini.value("plugin-configurations." + pid, "");
 			//update configuration
 			if (StringUtils.isNotBlank(config)) {
-				Xpp3Dom c = new Xpp3Dom("configuration");
-				c.addChild(Xpp3DomBuilder.build(new StringReader(config)));
+				Xpp3Dom c = Xpp3DomBuilder.build(new StringReader("<configuration>" + config + "</configuration>"));
 				plugin.setConfiguration(c);
 			}
 			//executions
@@ -291,7 +275,7 @@ public class MvnUtil {
 				if (StringUtils.isNotBlank(pephase)) {
 					pe.setPhase(pephase);
 				}
-				Integer pepriority = ini.getP().intValue(ekey + ".priority", null);
+				Integer pepriority = ini.getData().intValue(ekey + ".priority", null);
 				if (pepriority != null) {
 					pe.setPriority(pepriority);
 				}
@@ -347,49 +331,46 @@ public class MvnUtil {
 		}
 	}
 
-	public static String genIniPlusSections(IniPlus ini) {
-		StrBuilder sb = new StrBuilder();
-		Map<String, String> sectionInfo;
-		for (String section : ini.getSections()) {
-			sb.append("[").append(section).appendln("]");
-			sectionInfo = ini.getSection(section);
-			for (String item : WArrays.getSortedKeys(sectionInfo, new String[] {})) {
-				sb.append(item).append("=").appendln(sectionInfo.get(item));
-			}
-			sb.appendln("");
-		}
-		return sb.toString();
-	}
-
 	public static String genPomlinkBat(Model model) {
 		StrBuilder sb = new StrBuilder();
-		sb.append("set M2_REPO=").append(m2Dir).appendln("\\repository");
-		sb.append("set liblinkdir=").append(("war".equalsIgnoreCase(model.getPackaging())
-				? "WebRoot\\WEB-INF\\lib"
-				: "target\\lib")).appendln("");
-		sb.appendln("rmdir /s /q WebRoot");
-		sb.appendln("mklink /d WebRoot .\\src\\main\\webapp\\");
+		sb.appendln("@echo off");
+		sb.appendln("@for /F \"delims=\" %%I in (\"%~dp0\") do @set projectHome=%%~fI");
+		if ("war".equalsIgnoreCase(model.getPackaging())) {
+			sb.appendln("set liblinkdir=%projectHome%WebRoot\\WEB-INF\\lib");
+			sb.appendln("rmdir /s /q WebRoot");
+			sb.appendln("mklink /d %projectHome%WebRoot %projectHome%src\\main\\webapp\\");
+		} else {
+			sb.appendln("set liblinkdir=%projectHome%target\\lib");
+		}
 		sb.appendln("rmdir /s /q %liblinkdir%");
 		sb.appendln("mkdir %liblinkdir%");
 		sb.appendln("mkdir %liblinkdir%\\sources");
-		String artifactDir = "";
-		String artifactFile = "";
+
 		for (Dependency dependency : model.getDependencies()) {
 			if (dependency.getScope() == null || !dependency.getScope().equals("provided")) {
-				artifactDir = dependency.getGroupId();
-				artifactDir = StringUtils.replace(artifactDir, ".", "\\");
-				artifactDir = artifactDir + '\\' + dependency.getArtifactId() + '\\' + dependency.getVersion();
-				artifactFile = dependency.getArtifactId() + '-' + dependency.getVersion();
-
-				sb.appendln("mklink /h %liblinkdir%\\"
-						+ artifactFile + ".jar %M2_REPO%\\" + artifactDir + "\\" + artifactFile + ".jar");
-				sb.appendln("mklink /h %liblinkdir%\\sources\\"
-						+ artifactFile + "-sources.jar %M2_REPO%\\" + artifactDir + '\\' + artifactFile
-						+ "-sources.jar");
+				sb.appendln("call :wlink " + getArtifactDir(dependency) + " " + getArtifactFile(dependency));
 			}
 		}
-		sb.appendln("pause");
+		sb.appendln("goto :end");
+		sb.appendln("");
+		sb.appendln(":wlink");
+		sb.appendln("echo mklink==%1\\%2.jar");
+		sb.appendln("mklink /h %liblinkdir%\\%2.jar %M2_REPO%\\%1\\%2.jar");
+		sb.appendln("mklink /h %liblinkdir%\\sources\\%2.jar %M2_REPO%\\%1\\%2-sources.jar");
+		sb.appendln("goto :eof");
+		sb.appendln("");
+		sb.appendln(":end");
+		sb.appendln("echo pom mklink end!!!!!!!!!!!!!!!!!!!!!!!");
 		return sb.toString();
+	}
+
+	public static String getArtifactDir(Dependency dependency) {
+		return StringUtils.replace(dependency.getGroupId(), ".", "\\")
+				+ '\\' + dependency.getArtifactId() + '\\' + dependency.getVersion();
+	}
+
+	public static String getArtifactFile(Dependency dependency) {
+		return dependency.getArtifactId() + '-' + dependency.getVersion();
 	}
 
 	public static String genClasspath(Model model) {
@@ -400,16 +381,13 @@ public class MvnUtil {
 		sb.appendln("	<classpathentry excluding=\"**/.svn/\" kind=\"src\" output=\"target/test-classes\" path=\"src/test/resources\"/>");
 		sb.appendln("	<classpathentry excluding=\"**/.svn/\" kind=\"src\" path=\"src/main/java\"/>");
 		sb.appendln("	<classpathentry excluding=\"**/.svn/\" kind=\"src\" path=\"src/main/resources\"/>");
-		String artifactDir = "";
-		String artifactFile = "";
 		for (Dependency dependency : model.getDependencies()) {
-			artifactDir = dependency.getGroupId();
-			artifactDir = StringUtils.replace(artifactDir, ".", "\\");
-			artifactDir = artifactDir + '\\' + dependency.getArtifactId() + '\\' + dependency.getVersion();
-			artifactFile = dependency.getArtifactId() + '-' + dependency.getVersion();
-			sb.appendln("	<classpathentry kind=\"var\" path=\"M2_REPO/"
-					+ artifactDir + "/" + artifactFile + ".jar\" sourcepath=\"M2_REPO/" + artifactDir + "/"
-					+ artifactFile + "-sources.jar\"/>");
+			String artifactDir = getArtifactDir(dependency);
+			artifactDir = StringUtils.replace(artifactDir, "\\", "/");
+			String artifactFile = getArtifactFile(dependency);
+			sb.appendln("	<classpathentry kind=\"var\" " +
+					"path=\"M2_REPO/" + artifactDir + "/" + artifactFile + ".jar\" " +
+					"sourcepath=\"M2_REPO/" + artifactDir + "/" + artifactFile + "-sources.jar\"/>");
 		}
 
 		sb.appendln("	<classpathentry kind=\"con\" path=\"org.eclipse.jdt.launching.JRE_CONTAINER\"/>");
